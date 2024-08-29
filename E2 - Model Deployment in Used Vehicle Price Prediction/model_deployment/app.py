@@ -1,7 +1,7 @@
 
 from flask import Flask
 from flask_restx import Api, Resource, fields
-from model_deployment.Model_Dev import predict_price # Importar la función predict_price desde model_dev
+import Model_Dev
 
 app = Flask(__name__)
 api = Api(
@@ -70,7 +70,7 @@ class PredictPrice(Resource):
         make = args['Make']
 
         # Realizar la predicción
-        predicted_price, predicted_price_std = predict_price(
+        predicted_price, predicted_price_std = Model_Dev.predict_price(
             mileage=mileage, 
             year=year, 
             state=state, 
