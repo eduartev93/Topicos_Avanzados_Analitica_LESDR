@@ -1,7 +1,7 @@
 
 from flask import Flask
 from flask_restx import Api, Resource, fields
-from model_dev import predict_price  # Importar la función predict_price desde model_dev
+from model_deployment.Model_Dev import predict_price # Importar la función predict_price desde model_dev
 
 app = Flask(__name__)
 api = Api(
