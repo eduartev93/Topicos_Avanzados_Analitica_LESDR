@@ -47,7 +47,7 @@ class PredictPrice(Resource):
         make = data['Make']
      
         # Realizar la predicción
-        predicted_price,predicted_price_std = predict_price(mileage=mileage, year=year, state=state, model=model_name, make=make)
+        predicted_price,predicted_price_std = Model_Dev.predict_price(mileage=mileage, year=year, state=state, model=model_name, make=make)
 
         return {
             'predicted_price': predicted_price,
