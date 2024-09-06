@@ -6,7 +6,7 @@ import Model_Dev
 
 app = Flask(__name__)
 api = Api(
-    app_post,
+    app,
     version='1.0',
     title='Predecir el Precio de Coches API - POST',
     description='API para predecir el precio de coches')
