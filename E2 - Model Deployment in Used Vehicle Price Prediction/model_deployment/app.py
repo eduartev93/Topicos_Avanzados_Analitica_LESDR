@@ -1,3 +1,4 @@
+
 import os
 from flask import Flask
 from flask_restx import Api, Resource, fields
@@ -5,51 +6,21 @@ import Model_Dev
 
 app = Flask(__name__)
 api = Api(
-    app,
+    app_post,
     version='1.0',
-    title='Predecir el Precio de Coches API - GET',
-    description='API para predecir el precio de coches'
-)
+    title='Predecir el Precio de Coches API - POST',
+    description='API para predecir el precio de coches')
 
 ns = api.namespace('predict', description='Precio regresión')
 
-# Definir los argumentos esperados
-parser = api.parser()
-
-parser.add_argument(
-    'Mileage',
-    type=float,
-    required=True,
-    help='Millas del auto',
-    location='args')
-
-parser.add_argument(
-    'Year',
-    type=int,
-    required=True,
-    help='Año del auto',
-    location='args')
-
-parser.add_argument(
-    'State',
-    type=str,
-    required=True,
-    help='Estado donde está registrado el auto',
-    location='args')
-
-parser.add_argument(
-    'Model',
-    type=str,
-    required=True,
-    help='Modelo del auto',
-    location='args')
-
-parser.add_argument(
-    'Make',
-    type=str,
-    required=True,
-    help='Marca del auto',
-    location='args')
+# Definir el modelo del cuerpo de la solicitud
+input_model = api.model('InputModel', {
+    'Mileage': fields.Float(required=True, description='Millas del auto'),
+    'Year': fields.Integer(required=True, description='Año del auto'),
+    'State': fields.String(required=True, description='Estado donde esta registrado el auto'),
+    'Model': fields.String(required=True, description='Modelo del auto'),
+    'Make': fields.String(required=True, description='Marca del auto')
+})
 
 resource_fields = api.model('Resource', {
     'predicted_price': fields.Float,

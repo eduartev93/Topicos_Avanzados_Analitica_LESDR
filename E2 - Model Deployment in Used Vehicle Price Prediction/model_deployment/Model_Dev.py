@@ -23,7 +23,7 @@ def predict_price(mileage, year, state, model, make):
     # Realizar la prediccin
     predicted_price = model.predict(input_data)
     
-    predicted_price_std = 1000  # Esto debe ser reemplazado por el c�lculo real de la desviaci�n est�ndar
+    predicted_price_std = 336134.7546  
 
     return predicted_price[0], predicted_price_std
 
