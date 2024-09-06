@@ -4,14 +4,14 @@ from flask import Flask
 from flask_restx import Api, Resource, fields
 import Model_Dev
 
-app_post = Flask(__name__)
+app = Flask(__name__)
 api = Api(
-    app_post,
+    app,
     version='1.0',
     title='Predecir el Precio de Coches API - POST',
     description='API para predecir el precio de coches')
 
-ns_post = api.namespace('predict', description='Precio regresión')
+ns = api.namespace('predict', description='Precio regresión')
 
 # Definir el modelo del cuerpo de la solicitud
 input_model = api.model('InputModel', {
