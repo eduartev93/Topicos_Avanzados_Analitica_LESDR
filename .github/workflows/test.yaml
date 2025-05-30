@@ -1,0 +1,14 @@
+name: "test_wk"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        run: echo "test valida funciona"
